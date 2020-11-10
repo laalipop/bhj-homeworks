@@ -43,7 +43,7 @@ function countQuantityValue() {
     }
 
     if (target.classList.contains('product__quantity-control_dec')) {
-        if (this.querySelector('.product__quantity-value').textContent > 0) {
+        if (this.querySelector('.product__quantity-value').textContent > 1) {
             this.querySelector('.product__quantity-value').textContent--;
         }
     }

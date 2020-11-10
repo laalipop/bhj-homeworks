@@ -1,6 +1,13 @@
 const rowInput = document.getElementById('task__input');
 const tasks = document.querySelector('.tasks__list');
-let elementForClone = document.querySelector('.task');
+const clickButton = document.getElementById('tasks__add');
+
+clickButton.addEventListener('click', () => {
+    console.log('clickclick')
+    if (rowInput.value !== '') {
+        addNewTask(rowInput.value);
+    }
+});
 
 rowInput.addEventListener('keypress', rowEnter);
 tasks.addEventListener('click', deleteTask);
@@ -8,17 +15,20 @@ tasks.addEventListener('click', deleteTask);
 function rowEnter(event) {
     //event.preventDefault();
     if (rowInput.value !== '' && event.key === 'Enter') {
-        console.log('Задача добавлена');
         addNewTask(rowInput.value);
-        rowInput.value = '';
     }
 }
 
 function addNewTask(text) {
-    let newTask;   
-    newTask = elementForClone.cloneNode(true); 
-    newTask.firstElementChild.innerText = text;
-    tasks.appendChild(newTask);
+    event.preventDefault();
+    tasks.innerHTML +=
+        `<div class="task">
+            <div class="task__title">
+                ${text}
+            </div>
+            <a href="#" class="task__remove">&times;</a>
+        </div>`;
+    rowInput.value = '';
 }
 
 function deleteTask() {

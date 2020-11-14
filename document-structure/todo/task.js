@@ -3,21 +3,14 @@ const tasks = document.querySelector('.tasks__list');
 const clickButton = document.getElementById('tasks__add');
 
 clickButton.addEventListener('click', () => {
-    console.log('clickclick')
+    //console.log('clickclick')
     if (rowInput.value !== '') {
-        addNewTask(rowInput.value);
+        addNewTask(rowInput.value);        
     }
+    event.preventDefault();
 });
 
-rowInput.addEventListener('keypress', rowEnter);
 tasks.addEventListener('click', deleteTask);
-
-function rowEnter(event) {
-    //event.preventDefault();
-    if (rowInput.value !== '' && event.key === 'Enter') {
-        addNewTask(rowInput.value);
-    }
-}
 
 function addNewTask(text) {
     event.preventDefault();
